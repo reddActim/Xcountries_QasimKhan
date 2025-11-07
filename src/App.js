@@ -1,24 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import ShowCards from './ShowCards';
+import { useEffect, useState } from 'react';
 
 function App() {
+const [data , setData] = useState([]);
+
+useEffect(()=>{
+  fetch("https://xcountries-backend.labs.crio.do/all").then((fetchData) => fetchData.json())
+  .then((finalData)=>{
+    console.log(typeof finalData);
+    setData(finalData);
+  }).catch((error)=>{
+    console.error(error);
+  })
+}, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ShowCards data = {data}/>
   );
 }
 
