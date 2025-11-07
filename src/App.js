@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import ShowCards from './ShowCards';
+import ShowCards from './components/ShowCards';
 import { useEffect, useState } from 'react';
 
 function App() {
